@@ -29,3 +29,4 @@ public class SimpleArticleService implements ArticleService {
                 .forEach(article -> articleStore.save(article));
     }
 }
+

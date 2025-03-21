@@ -27,3 +27,4 @@ public class Word {
         this.value = value;
     }
 }
+

@@ -19,3 +19,4 @@ public class RandomArticleGenerator implements ArticleGenerator {
         return new Article(content);
     }
 }
+

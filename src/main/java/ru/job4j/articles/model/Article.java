@@ -31,3 +31,4 @@ public class Article {
         this.text = text;
     }
 }
+

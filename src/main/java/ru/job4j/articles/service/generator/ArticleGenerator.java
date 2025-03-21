@@ -8,3 +8,4 @@ import java.util.List;
 public interface ArticleGenerator {
     Article generate(List<Word> words);
 }
+
