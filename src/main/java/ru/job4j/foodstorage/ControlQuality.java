@@ -8,29 +8,19 @@ public class ControlQuality {
     public ControlQuality(List<Store> stores) {
         this.stores = stores;
     }
-    public void distribute(Food food) {
-        long shelfLifeRemaining = food.getShelfLifeRemaining();
-        long totalShelfLife = food.getExpiryDate().toEpochDay() - food.getCreateDate().toEpochDay();
-        double percentageUsed = ((totalShelfLife - shelfLifeRemaining) / (double) totalShelfLife) * 100;
 
-        if (percentageUsed < 25) {
-            addToStore(food, Warehouse.class);
-        } else if (percentageUsed < 75) {
-            addToStore(food, Shop.class);
-        } else if (percentageUsed < 100) {
-            food = new Food(food.getName(), food.getExpiryDate(), food.getCreateDate(), food.getDiscountedPrice(), food.getDiscount());
-            addToStore(food, Shop.class);
-        } else {
-            addToStore(food, Trash.class);
+    public void addToStore(Food food) {
+        for (Store store : stores) {
+            if (store.accept(food)) {
+                store.addFood(food);
+                break;
+            }
         }
     }
 
-    private void addToStore(Food food, Class<? extends AbstractStore> storeClass) {
-        for (Store store : stores) {
-            if (store.getClass().equals(storeClass)) {
-                store.addFood(food);
-                return;
-            }
+    public void redistribute(List<Food> foods) {
+        for (Food food : foods) {
+            addToStore(food);
         }
     }
 }

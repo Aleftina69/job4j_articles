@@ -16,6 +16,7 @@ public class Food {
         this.price = price;
         this.discount = discount;
     }
+
     public String getName() {
         return name;
     }
@@ -36,15 +37,7 @@ public class Food {
         return discount;
     }
 
-    public double getDiscountedPrice() {
-        return price - (price * (discount / 100));
-    }
-
-    public long getShelfLifeRemaining() {
-        return expiryDate.toEpochDay() - LocalDate.now().toEpochDay();
-    }
-
-    public long getTotalShelfLife() {
-        return expiryDate.toEpochDay() - createDate.toEpochDay();
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

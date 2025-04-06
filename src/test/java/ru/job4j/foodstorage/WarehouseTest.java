@@ -1,30 +1,26 @@
 package ru.job4j.foodstorage;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+public class WarehouseTest {
+    @Test
+    public void whenFoodExpiresLessThan25PercentThenAccepted() {
+        FoodFresh foodFresh = new FoodFresh();
+        Warehouse warehouse = new Warehouse(foodFresh);
 
-class WarehouseTest {
-    private Warehouse warehouse;
-    private Food food;
-
-    @BeforeEach
-    void setUp() {
-        warehouse = new Warehouse();
-        food = new Food("Apple", LocalDate.now().plusDays(10), LocalDate.now(), 100, 0);
+        Food food = new Food("Milk", LocalDate.now().plusDays(10), LocalDate.now().minusDays(1), 100, 0);
+        assertTrue(warehouse.accept(food));
     }
 
     @Test
-    void testAddFood() {
-        warehouse.addFood(food);
-        assertTrue(warehouse.getFoods().contains(food));
-    }
+    public void whenFoodExpiresMoreThan25PercentThenNotAccepted() {
+        FoodFresh foodFresh = new FoodFresh();
+        Warehouse warehouse = new Warehouse(foodFresh);
 
-    @Test
-    void testGetName() {
-        assertEquals("Warehouse", warehouse.getName());
+        Food food = new Food("Milk", LocalDate.now().plusDays(5), LocalDate.now().minusDays(5), 100, 0);
+        assertFalse(warehouse.accept(food));
     }
 }
