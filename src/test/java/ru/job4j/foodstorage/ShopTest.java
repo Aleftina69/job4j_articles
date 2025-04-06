@@ -24,6 +24,6 @@ public class ShopTest {
 
         Food food = new Food("Juice", LocalDate.now().plusDays(2), LocalDate.now().minusDays(8), 40, 20);
         assertTrue(shop.accept(food));
-        assertEquals(32.0, food.getPrice(), 0.01); // Проверка, что цена была снижена на 20%
+        assertEquals(32.0, food.getPrice(), 0.01);
     }
 }
