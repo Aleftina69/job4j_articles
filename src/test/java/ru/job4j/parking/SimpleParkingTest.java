@@ -18,8 +18,8 @@ class SimpleParkingTest {
         Vehicle car = new Car("A1", 1);
 
         boolean parked = parking.park(car);
-        assertFalse(parked);
-        assertFalse(parking.isParked(car));
+        assertTrue(parked);
+        assertTrue(parking.isParked(car));
     }
 
     @Test
@@ -40,7 +40,7 @@ class SimpleParkingTest {
 
         parking.park(car);
         boolean isLeave = parking.leave(car);
-        assertFalse(isLeave);
+        assertTrue(isLeave);
         assertFalse(parking.isParked(car));
     }
 
