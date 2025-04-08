@@ -19,7 +19,7 @@ public class ControlQualityTest {
         Trash trash = new Trash(foodFresh);
 
         ControlQuality controlQuality = new ControlQuality(Arrays.asList(warehouse, shop, trash));
-        Food food = new Food("Milk", FIXED_DATE.plusDays(10), FIXED_DATE.minusDays(1), 100, 0);
+        Food food = new Food("Milk", FIXED_DATE.plusDays(20), FIXED_DATE.minusDays(1), 100, 0);
         controlQuality.addToStore(food);
 
         assertTrue(warehouse.getFoods().contains(food));

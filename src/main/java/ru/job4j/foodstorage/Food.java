@@ -40,4 +40,8 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public boolean isExpired() {
+        return LocalDate.now().isAfter(expiryDate);
+    }
 }
