@@ -10,7 +10,9 @@ public class QuickList {
     }
 
     private static <T> void quickSort(List<T> sequence, int start, int end, Comparator<T> comparator) {
-        if (start >= end) return;
+        if (start >= end) {
+            return;
+        }
         int h = breakPartition(sequence, start, end, comparator);
         quickSort(sequence, start, h - 1, comparator);
         quickSort(sequence, h + 1, end, comparator);
