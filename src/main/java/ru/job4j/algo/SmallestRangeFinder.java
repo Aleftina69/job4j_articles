@@ -15,7 +15,7 @@ public class SmallestRangeFinder {
         for (int num : nums) {
             uniqueSet.add(num);
         }
-        if(uniqueSet.size() < k) {
+        if (uniqueSet.size() < k) {
             return null;
         }
 
